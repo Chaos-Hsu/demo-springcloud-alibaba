@@ -12,6 +12,7 @@
         <module>demosa-shop</module>
         <module>demosa-shop-user</module>
         <module>demosa-shop-product</module>
+        <module>demosa-shop-order</module>
     </modules>
 
     <!-- 父工程 -->

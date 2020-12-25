@@ -1,9 +1,9 @@
 server:
-  port: 8072
+  port: 8073
 
 spring:
   application:
-    name: service-prodcut
+    name: service-order
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
