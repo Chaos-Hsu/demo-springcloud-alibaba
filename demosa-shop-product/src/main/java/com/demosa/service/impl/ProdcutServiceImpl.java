@@ -1,7 +1,12 @@
 package com.demosa.service.impl;
 
+import com.demosa.dao.ProductDao;
+import com.demosa.domain.Product;
 import com.demosa.service.ProdcutService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * 描述 :
@@ -10,4 +15,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProdcutServiceImpl implements ProdcutService {
+
+    @Autowired
+    private ProductDao productDao;
+
+    @Override
+    public Product findById(Integer pid) {
+        Optional<Product> byId = productDao.findById(pid);
+        return byId.get();
+    }
 }
