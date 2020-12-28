@@ -15,3 +15,7 @@ spring:
         hbm2ddl:
           auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect #方言 默认索引方式InnoDBD
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://nacos.chensi.site/

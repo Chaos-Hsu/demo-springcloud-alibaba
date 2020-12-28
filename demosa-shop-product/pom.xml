@@ -24,6 +24,12 @@
             <artifactId>demosa-shop</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- 注册中心 客户端依赖 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
