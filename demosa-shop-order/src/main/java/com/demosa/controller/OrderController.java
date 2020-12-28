@@ -30,5 +30,20 @@ public class OrderController {
         return order;
     }
 
+    @RequestMapping("/order2/prod/{pid}")
+    public Order order2(@PathVariable("pid") Integer pid) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping("/order2/message")
+    public String message() {
+        return "高并发测试";
+    }
+
 
 }
