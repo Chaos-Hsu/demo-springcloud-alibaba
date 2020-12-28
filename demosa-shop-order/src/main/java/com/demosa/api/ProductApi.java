@@ -1,9 +1,7 @@
 package com.demosa.api;
 
-import com.demosa.domain.Product;
+import com.demosa.apis.BaseProductApi;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 描述 :
@@ -11,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 时间 : 2020/12/28 2:27 下午
  */
 @FeignClient(value = "service-product", path = "product")
-public interface ProductApi {
+public interface ProductApi extends BaseProductApi {
 
-    @RequestMapping("/{pid}")
-    Product product(@PathVariable("pid") Integer pid);
 
 }

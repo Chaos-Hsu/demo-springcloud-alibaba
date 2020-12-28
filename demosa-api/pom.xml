@@ -6,11 +6,10 @@
         <artifactId>demosa-parent</artifactId>
         <groupId>com.demosa</groupId>
         <version>1.0-SNAPSHOT</version>
-        <!--<relativePath>../pom.xml</relativePath>-->
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demosa-shop-order</artifactId>
+    <artifactId>demosa-api</artifactId>
 
     <dependencies>
         <!-- springboot web -->
@@ -32,18 +31,6 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- feign-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
 
-        <!-- API接口 -->
-        <dependency>
-            <groupId>com.demosa</groupId>
-            <artifactId>demosa-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
-
 </project>
