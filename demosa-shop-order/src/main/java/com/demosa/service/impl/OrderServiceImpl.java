@@ -6,12 +6,9 @@ import com.demosa.domain.Product;
 import com.demosa.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 /**
  * 描述 :
@@ -41,9 +38,22 @@ public class OrderServiceImpl implements OrderService {
         //    return null;
         //}
 
-        List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
-        ServiceInstance instance = instances.get(0);
-        Product product = restTemplate.getForObject("http://" + instance.getHost() + ":" + instance.getPort() + "/product/ " + pid, Product.class);
+        //List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
+        //ServiceInstance instance = instances.get(0);
+        //Product product = restTemplate.getForObject("http://" + instance.getHost() + ":" + instance.getPort() + "/product/ " + pid, Product.class);
+        //if (product == null) {
+        //    log.error("创建失败:{}产品不存在", pid);
+        //    return null;
+        //}
+        //List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
+        //int i = new Random().nextInt(instances.size());
+        //ServiceInstance instance = instances.get(i);
+        //Product product = restTemplate.getForObject("http://" + instance.getHost() + ":" + instance.getPort() + "/product/ " + pid, Product.class);
+        //if (product == null) {
+        //    log.error("创建失败:{}产品不存在", pid);
+        //    return null;
+        //}
+        Product product = restTemplate.getForObject("http://service-product/product/ " + pid, Product.class);
         if (product == null) {
             log.error("创建失败:{}产品不存在", pid);
             return null;

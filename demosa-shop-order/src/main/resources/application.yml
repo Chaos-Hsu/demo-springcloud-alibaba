@@ -19,3 +19,8 @@ spring:
     nacos:
       discovery:
         server-addr: http://nacos.chensi.site/
+
+
+service-product: #调用服务的名称
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #客户端负载均衡随机规则
