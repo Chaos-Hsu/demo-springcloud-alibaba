@@ -1,5 +1,6 @@
 package com.demosa.service.impl;
 
+import com.demosa.api.ProductApi;
 import com.demosa.dao.OrderDao;
 import com.demosa.domain.Order;
 import com.demosa.domain.Product;
@@ -25,8 +26,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
+    //@Autowired
+    //private DiscoveryClient discoveryClient;
+
     @Autowired
-    private DiscoveryClient discoveryClient;
+    private ProductApi productApi;
+
 
 
     @Override
@@ -53,12 +58,12 @@ public class OrderServiceImpl implements OrderService {
         //    log.error("创建失败:{}产品不存在", pid);
         //    return null;
         //}
-        Product product = restTemplate.getForObject("http://service-product/product/ " + pid, Product.class);
+        //Product product = restTemplate.getForObject("http://service-product/product/ " + pid, Product.class);
+        Product product = productApi.product(pid);
         if (product == null) {
             log.error("创建失败:{}产品不存在", pid);
             return null;
         }
-
         Order order = new Order();
         order.setUid(1);
         order.setUsername("xqc");

@@ -8,12 +8,14 @@
     <artifactId>demosa-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>demosa-shop</module>
         <module>demosa-shop-user</module>
         <module>demosa-shop-product</module>
         <module>demosa-shop-order</module>
     </modules>
+
 
     <!-- 父工程 -->
     <parent>
@@ -75,4 +77,20 @@
 
 
     </dependencyManagement>
+
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-xu</id>
+            <name>internal nexus repository</name>
+            <!--镜像采用配置好的组的地址-->
+            <url>http://nexus.chensi.site/repository/java-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-xu</id>
+            <name>internal nexus repository</name>
+            <!--镜像采用配置好的组的地址-->
+            <url>http://nexus.chensi.site/repository/java-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
