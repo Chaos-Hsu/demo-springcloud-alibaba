@@ -66,13 +66,18 @@ public class OrderServiceImpl implements OrderService {
             return null;
         }
         Order order = new Order();
-        order.setUid(1);
-        order.setUsername("xqc");
-        order.setPid(pid);
-        order.setPname(product.getPname());
-        order.setPprice(product.getPprice());
-        order.setNumber(1);
-        orderDao.save(order);
+
+        if (product.getPid() == -10) {
+            order.setOid(-100);
+        } else {
+            order.setUid(1);
+            order.setUsername("xqc");
+            order.setPid(pid);
+            order.setPname(product.getPname());
+            order.setPprice(product.getPprice());
+            order.setNumber(1);
+            orderDao.save(order);
+        }
         return order;
     }
 

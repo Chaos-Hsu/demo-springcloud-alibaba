@@ -33,3 +33,8 @@ spring:
 service-product: #调用服务的名称
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #客户端负载均衡随机规则
+
+#开启feignd对sentinel支持
+feign:
+  sentinel:
+    enabled: true
