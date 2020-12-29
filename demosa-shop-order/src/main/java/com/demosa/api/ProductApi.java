@@ -1,12 +1,8 @@
 package com.demosa.api;
 
-import com.demosa.api.fallback.ProdcutFallBack;
 import com.demosa.api.fallback.ProdcutFallBackFactory;
 import com.demosa.apis.BaseProductApi;
-import com.demosa.domain.Product;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 描述 : 服务接口
@@ -20,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
         fallbackFactory = ProdcutFallBackFactory.class
 )
 public interface ProductApi extends BaseProductApi {
-//public interface ProductApi {
-
 
 
 }
