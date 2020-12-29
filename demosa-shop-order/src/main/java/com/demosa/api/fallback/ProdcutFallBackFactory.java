@@ -15,7 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProdcutFallBackFactory implements FallbackFactory<ProductApi> {
 
-
+    /**
+     * 容错处理
+     *
+     * @param throwable
+     * @return
+     */
     @Override
     public ProductApi create(Throwable throwable) {
         return p -> {
