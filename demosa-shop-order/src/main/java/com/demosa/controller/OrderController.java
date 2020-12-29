@@ -46,4 +46,18 @@ public class OrderController {
     }
 
 
+
+
+
+    @RequestMapping("/order/sentinel/test1")
+    public String sentinelTest1() {
+        return "高并发测试1";
+    }
+
+    @RequestMapping("/order/sentinel/test2")
+    public String sentinelTest2() {
+        return "高并发测试2";
+    }
+
+
 }

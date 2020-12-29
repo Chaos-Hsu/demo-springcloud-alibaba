@@ -22,7 +22,10 @@ spring:
     nacos:
       discovery:
         server-addr: http://nacos.chensi.site/
-
+    sentinel:
+      transport:
+        port: 9173
+        dashboard: localhost:9849
 
 service-product: #调用服务的名称
   ribbon:

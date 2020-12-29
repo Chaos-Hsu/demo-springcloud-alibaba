@@ -44,6 +44,14 @@
             <artifactId>demosa-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+
     </dependencies>
 
 </project>
