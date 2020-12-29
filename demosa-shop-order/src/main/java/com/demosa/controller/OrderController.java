@@ -1,5 +1,6 @@
 package com.demosa.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.fastjson.JSON;
 import com.demosa.domain.Order;
 import com.demosa.service.OrderService;
@@ -46,11 +47,14 @@ public class OrderController {
     }
 
 
-
-
+    //int i = 0;
 
     @RequestMapping("/order/sentinel/test1")
     public String sentinelTest1() {
+        /*i++;
+        if (i % 3 == 0) {
+            throw new RuntimeException("整除异常");
+        }*/
         orderService.message();
         return "高并发测试1";
     }
@@ -59,6 +63,13 @@ public class OrderController {
     public String sentinelTest2() {
         orderService.message();
         return "高并发测试2";
+    }
+
+    @RequestMapping("/order/sentinel/test3")
+    @SentinelResource("test3")
+    public String sentinelTest3(String name,Integer age) {
+        log.info("sentinel热点规则测试,name:{},age:{}", name, age);
+        return "高并发测试3";
     }
 
 
