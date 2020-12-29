@@ -26,7 +26,7 @@ spring:
       #filter:
         #enabled: false #手动编写开启链路限流
       transport:
-        port: 9173
+        port: 9173 #可视化页面
         dashboard: localhost:9849
 
 
