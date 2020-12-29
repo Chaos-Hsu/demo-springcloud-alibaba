@@ -6,6 +6,7 @@ import com.demosa.api.ProductApi;
 import com.demosa.dao.OrderDao;
 import com.demosa.domain.Order;
 import com.demosa.domain.Product;
+import com.demosa.exception.OrderServiceBlockHandler;
 import com.demosa.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,12 +76,12 @@ public class OrderServiceImpl implements OrderService {
         return order;
     }
 
-    //int i = 0;
-
     @Override
     @SentinelResource(
             value = "message"
-            , blockHandler = "blockHandler"//资源发生BlockException异常进行捕获
+            , blockHandlerClass = OrderServiceBlockHandler.class//该类中的blockHandel2
+            , blockHandler = "blockHandler2"//资源发生BlockException异常进行捕获
+            //, blockHandler = "blockHandler"//资源发生BlockException异常进行捕获
             , fallback = "fallback" //资源发生所有异常进行捕获
     )
     public void message() {
@@ -89,6 +90,8 @@ public class OrderServiceImpl implements OrderService {
             throw new RuntimeException("整除异常");
         }*/
     }
+
+    //int i = 0;
 
 
     public void blockHandler(BlockException e) {
