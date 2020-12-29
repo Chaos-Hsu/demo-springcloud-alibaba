@@ -15,4 +15,8 @@ public interface OrderService {
      * @return
      */
     Order createOrder(Integer pid);
+
+
+    void message();
+
 }

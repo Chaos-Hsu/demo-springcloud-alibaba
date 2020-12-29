@@ -51,11 +51,13 @@ public class OrderController {
 
     @RequestMapping("/order/sentinel/test1")
     public String sentinelTest1() {
+        orderService.message();
         return "高并发测试1";
     }
 
     @RequestMapping("/order/sentinel/test2")
     public String sentinelTest2() {
+        orderService.message();
         return "高并发测试2";
     }
 

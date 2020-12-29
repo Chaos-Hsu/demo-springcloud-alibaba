@@ -23,9 +23,12 @@ spring:
       discovery:
         server-addr: http://nacos.chensi.site/
     sentinel:
+      #filter:
+        #enabled: false #手动编写开启链路限流
       transport:
         port: 9173
         dashboard: localhost:9849
+
 
 service-product: #调用服务的名称
   ribbon:

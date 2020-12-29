@@ -32,6 +32,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outEncoding>UTF-8</project.reporting.outEncoding>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <!-- 版本对链路不生效 使用高版本 -->
+        <!--<spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>-->
         <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <fastjson.version>1.2.56</fastjson.version>
         <mysql.version>8.0.13</mysql.version>

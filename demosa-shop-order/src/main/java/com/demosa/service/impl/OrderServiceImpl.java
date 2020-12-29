@@ -1,5 +1,6 @@
 package com.demosa.service.impl;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.demosa.api.ProductApi;
 import com.demosa.dao.OrderDao;
 import com.demosa.domain.Order;
@@ -7,7 +8,6 @@ import com.demosa.domain.Product;
 import com.demosa.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,7 +31,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductApi productApi;
-
 
 
     @Override
@@ -73,5 +72,10 @@ public class OrderServiceImpl implements OrderService {
         order.setNumber(1);
         orderDao.save(order);
         return order;
+    }
+
+    @Override
+    @SentinelResource("message")
+    public void message() {
     }
 }
