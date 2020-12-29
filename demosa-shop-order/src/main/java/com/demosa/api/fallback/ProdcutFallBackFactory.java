@@ -25,15 +25,5 @@ public class ProdcutFallBackFactory implements FallbackFactory<ProductApi> {
             product.setPname("容错工厂,pid=" + p);
             return product;
         };
-        /*return new ProductApi() {
-            @Override
-            public Product product(Integer pid) {
-                log.error("{}", throwable);
-                Product product = new Product();
-                product.setPid(-100);
-                product.setPname("容错工厂,pid=" + pid);
-                return product;
-            }
-        };*/
     }
 }
