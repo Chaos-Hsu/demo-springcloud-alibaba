@@ -1,10 +1,5 @@
 package com.demosa.config;
 
-import com.alibaba.csp.sentinel.adapter.servlet.CommonFilter;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 /**
  * 描述 :
  * 作者 : 徐起超
