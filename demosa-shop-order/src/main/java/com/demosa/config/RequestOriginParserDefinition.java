@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
  * 作者 : 徐起超
  * 时间 : 2020/12/29 11:56 上午
  */
-@Component
-public class RequestOriginParserDefinition implements RequestOriginParser {
+//@Component
+//public class RequestOriginParserDefinition implements RequestOriginParser {
 
 
     /**
@@ -21,12 +21,12 @@ public class RequestOriginParserDefinition implements RequestOriginParser {
      * @param request
      * @return
      */
-    @Override
-    public String parseOrigin(HttpServletRequest request) {
-        String serviceName = request.getParameter("serviceName");
-        if (StringUtils.isEmpty(serviceName)) {
-            throw new RuntimeException("name为空");
-        }
-        return serviceName;
-    }
-}
+//    @Override
+//    public String parseOrigin(HttpServletRequest request) {
+//        String serviceName = request.getParameter("serviceName");
+//        if (StringUtils.isEmpty(serviceName)) {
+//            throw new RuntimeException("name为空");
+//        }
+//        return serviceName;
+//    }
+//}

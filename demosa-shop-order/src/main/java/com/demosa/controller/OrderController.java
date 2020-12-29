@@ -4,6 +4,7 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.fastjson.JSON;
 import com.demosa.domain.Order;
 import com.demosa.service.OrderService;
+import com.demosa.service.impl.OrderServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,15 +50,15 @@ public class OrderController {
 
     //int i = 0;
 
-    @RequestMapping("/order/sentinel/test1")
+    /*@RequestMapping("/order/sentinel/test1")
     public String sentinelTest1() {
-        /*i++;
+        i++;
         if (i % 3 == 0) {
             throw new RuntimeException("整除异常");
-        }*/
+        }
         orderService.message();
         return "高并发测试1";
-    }
+    }*/
 
     @RequestMapping("/order/sentinel/test2")
     public String sentinelTest2() {
@@ -67,10 +68,14 @@ public class OrderController {
 
     @RequestMapping("/order/sentinel/test3")
     @SentinelResource("test3")
-    public String sentinelTest3(String name,Integer age) {
+    public String sentinelTest3(String name, Integer age) {
         log.info("sentinel热点规则测试,name:{},age:{}", name, age);
         return "高并发测试3";
     }
 
-
+    @RequestMapping("/order/sentinel/test4")
+    public String sentinelTest4() {
+        orderService.message();
+        return "高并发测试4";
+    }
 }

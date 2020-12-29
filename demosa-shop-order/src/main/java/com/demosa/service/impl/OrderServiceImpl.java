@@ -1,6 +1,7 @@
 package com.demosa.service.impl;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.demosa.api.ProductApi;
 import com.demosa.dao.OrderDao;
 import com.demosa.domain.Order;
@@ -74,8 +75,27 @@ public class OrderServiceImpl implements OrderService {
         return order;
     }
 
+    //int i = 0;
+
     @Override
-    @SentinelResource("message")
+    @SentinelResource(
+            value = "message"
+            , blockHandler = "blockHandler"//资源发生BlockException异常进行捕获
+            , fallback = "fallback" //资源发生所有异常进行捕获
+    )
     public void message() {
+        /*i++;
+        if (i % 3 == 0) {
+            throw new RuntimeException("整除异常");
+        }*/
+    }
+
+
+    public void blockHandler(BlockException e) {
+        log.info("触发了blockhandler,内容为:{}", e);
+    }
+
+    public void fallback(Throwable e) {
+        log.info("触发了fallback,内容为:{}", e);
     }
 }
