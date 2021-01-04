@@ -1,0 +1,18 @@
+server:
+  port: 8000
+
+
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:                                 #路由数组[ 多个路由 请求满足什么条件转发到指定的微服务]
+        - id : prodoct_route                  #当前路由的标识,要求唯一
+          uri: http://localhost:8072          #请求最终要转发的地址
+          order: 1                            #路由的优先级 数字越小优先级越高
+          predicates:                         #断言,转发请求要满足的条件
+            - Path=/product-serv/**
+          filters:                            #请求传递过程中对请求进行过滤
+            - StripPrefix=1                   #在请求转发之前去掉一层路径 http://127.0.0.1:8000/product-serv/product/1->http://127.0.0.1:8000/product/1

@@ -15,6 +15,7 @@
         <module>demosa-shop-product</module>
         <module>demosa-shop-order</module>
         <module>demosa-api</module>
+        <module>demosa-gateway</module>
     </modules>
 
 
