@@ -14,6 +14,9 @@ spring:
           uri: lb://service-product           #lb指从nacos中获取微服务病遵循负载均衡
           predicates:                         #断言,转发请求要满足的条件
             - Path=/product-serv/**
+            #- Before=
+            #- Method=
+            #- Age=18,60                       #自定义断言18-60可以访问
           filters:                            #请求传递过程中对请求进行过滤
             - StripPrefix=1                   #在请求转发之前去掉一层路径 http://127.0.0.1:8000/product-serv/product/1->http://127.0.0.1:8000/product/1
       discovery:
