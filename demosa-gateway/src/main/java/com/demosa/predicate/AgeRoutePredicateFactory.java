@@ -16,7 +16,7 @@ import java.util.function.Predicate;
  * 作者 : 徐起超
  * 时间 : 2021/1/4 7:05 下午
  */
-@Component
+//@Component
 public class AgeRoutePredicateFactory extends AbstractRoutePredicateFactory<AgeRoutePredicateFactory.Config> {
 
     /**
