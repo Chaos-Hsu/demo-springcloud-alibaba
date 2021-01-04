@@ -11,7 +11,7 @@ spring:
     gateway:
       routes:                                 #路由数组[ 多个路由 请求满足什么条件转发到指定的微服务]
         - id : prodoct_route                  #当前路由的标识,要求唯一
-          uri: lb://service-product           #lb指从nacos中获取微服务病遵循负载均衡
+          uri: lb://service-product           #lb指从nacos中获取微服务病遵循负载均衡->LoadBalancerClientFilter
           predicates:                         #断言,转发请求要满足的条件
             - Path=/product-serv/**
             #- Before=
