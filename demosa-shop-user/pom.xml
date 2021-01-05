@@ -24,6 +24,7 @@
             <artifactId>demosa-shop</artifactId>
             <version>${project.version}</version>
         </dependency>
+
     </dependencies>
 
 
