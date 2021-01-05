@@ -19,3 +19,10 @@ spring:
     nacos:
       discovery:
         server-addr: http://nacos.chensi.site/
+  #链路追踪
+  zipkin:
+    base-url: http://127.0.0.1:9411/ #zipkin server地址
+    discovery-client-enabled: false #让nacos把他当成URL 并不是服务名
+  sleuth:
+    sampler:
+      probability: 1.0 #采样百分比
