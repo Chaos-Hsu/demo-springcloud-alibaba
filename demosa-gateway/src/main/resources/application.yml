@@ -19,7 +19,13 @@ spring:
             #- Age=18,60                      #自定义断言18-60可以访问
           filters:                            #请求传递过程中对请求进行过滤
             - StripPrefix=1                   #在请求转发之前去掉一层路径 http://127.0.0.1:8000/product-serv/product/1->http://127.0.0.1:8000/product/1
-            #- Log=true,false                  #自定义过滤器
+            #- Log=true,false                 #自定义过滤器
+        - id: order_route                     #当前路由的标识,要求唯一
+          uri: lb://service-order           #lb指从nacos中获取微服务病遵循负载均衡->LoadBalancerClientFilter
+          predicates:
+            - Path=/order-serv/**
+          filters:
+            - StripPrefix=1
       discovery:
         locator:
           enabled: true                       #让gateway发现nacos微服务列表
