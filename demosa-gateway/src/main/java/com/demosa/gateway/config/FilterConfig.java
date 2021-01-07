@@ -1,4 +1,4 @@
-package com.demosa.order.gateway.config;
+package com.demosa.gateway.config;
 
 /**
  * 描述 :
