@@ -1,7 +1,7 @@
 package com.demosa.order.api;
 
-import com.demosa.order.api.fallback.ProdcutFallBackFactory;
 import com.demosa.apis.BaseProductApi;
+import com.demosa.order.api.fallback.ProdcutFallBackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**

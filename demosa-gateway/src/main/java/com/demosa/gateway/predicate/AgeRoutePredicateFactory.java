@@ -1,4 +1,4 @@
-package com.demosa.user.gateway.predicate;
+package com.demosa.gateway.predicate;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

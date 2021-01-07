@@ -1,4 +1,4 @@
-package com.demosa.user.gateway.config;
+package com.demosa.gateway.config;
 
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayFlowRule;
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayRuleManager;
