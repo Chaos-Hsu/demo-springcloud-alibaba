@@ -2,17 +2,23 @@ package com.demosa.order.service.impl;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.demosa.order.api.ProductApi;
-import com.demosa.order.dao.OrderDao;
 import com.demosa.domain.Order;
 import com.demosa.domain.Product;
+import com.demosa.domain.TxLog;
+import com.demosa.order.api.ProductApi;
+import com.demosa.order.dao.OrderDao;
+import com.demosa.order.dao.TxLogDao;
 import com.demosa.order.exception.OrderServiceBlockHandler;
 import com.demosa.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * 描述 :
@@ -25,6 +31,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderDao orderDao;
+
+    @Autowired
+    private TxLogDao txLogDao;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -88,6 +97,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public void createTxOrder(Order order, String txId) throws Exception {
+        //本地事务日志
+        TxLog txLog = new TxLog();
+        txLog.setTxId(txId);
+        txLog.setDate(new Date());
+        txLogDao.save(txLog);
+        //int i = 1 / 0;
+        //保存订单
+        orderDao.save(order);
+    }
+
+    @Override
     @SentinelResource(
             value = "message"
             , blockHandlerClass = OrderServiceBlockHandler.class//该类中的blockHandel2
@@ -100,6 +121,36 @@ public class OrderServiceImpl implements OrderService {
         if (i % 3 == 0) {
             throw new RuntimeException("整除异常");
         }*/
+    }
+
+    @Override
+    public void createOrderBefore(Integer pid) throws Exception {
+
+        Product product = productApi.product(pid);
+        if (product == null) {
+            log.error("创建失败:{}产品不存在", pid);
+            throw new RuntimeException("创建失败");
+        }
+        //创建订单
+        Order order = new Order();
+        if (product.getPid() == -10) {
+            order.setOid(-100);
+        } else {
+            order.setUid(1);
+            order.setUsername("xqc");
+            order.setPid(pid);
+            order.setPname(product.getPname());
+            order.setPprice(product.getPprice());
+            order.setNumber(1);
+        }
+        //事务ID
+        String txId = UUID.randomUUID().toString();
+        //给rocketMq服务 发送半事务消息
+        rocketMQTemplate.sendMessageInTransaction(
+                "tx_producer_group", //生产者组名
+                "tx_topic",//主题
+                MessageBuilder.withPayload(order).setHeader("txId", txId).build(),//消息内容
+                order);
     }
 
     //int i = 0;

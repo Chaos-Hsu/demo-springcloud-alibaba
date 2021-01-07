@@ -31,6 +31,19 @@ public class OrderController {
         return order;
     }
 
+    /**
+     * 事务下单
+     *
+     * @param pid
+     * @throws Exception
+     */
+    @RequestMapping("/tx/order/prod/{pid}")
+    public void txOrder(@PathVariable("pid") Integer pid) throws Exception {
+        log.info("进行事务下单{}号商品查询", pid);
+        orderService.createOrderBefore(pid);
+        log.info("事务下单成功");
+    }
+
     @RequestMapping("/order2/prod/{pid}")
     public Order order2(@PathVariable("pid") Integer pid) {
         try {
