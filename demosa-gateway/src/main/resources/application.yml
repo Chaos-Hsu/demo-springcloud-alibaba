@@ -33,6 +33,12 @@ spring:
             - Path=/order-serv/**
           filters:
             - StripPrefix=1
+        - id: user_route                      #当前路由的标识,要求唯一
+          uri: lb://user-order           #lb指从nacos中获取微服务病遵循负载均衡->LoadBalancerClientFilter
+          predicates:
+            - Path=/user-serv/**
+          filters:
+            - StripPrefix=1
       discovery:
         locator:
           enabled: true                       #让gateway发现nacos微服务列表

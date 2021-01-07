@@ -44,3 +44,12 @@ service-product: #调用服务的名称
 feign:
   sentinel:
     enabled: true
+
+#rocketMQ
+rocketmq:
+  name-server: 182.254.210.150:9876
+  producer:
+    group: shop-order
+  accessKey: root
+  secretKey: 83bjHb!@
+

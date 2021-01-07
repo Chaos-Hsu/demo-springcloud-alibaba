@@ -39,6 +39,7 @@
         <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <fastjson.version>1.2.56</fastjson.version>
         <mysql.version>8.0.13</mysql.version>
+        <rocketmq-client.version>4.4.0</rocketmq-client.version>
     </properties>
 
 
@@ -79,6 +80,12 @@
                 <version>${mysql.version}</version>
             </dependency>
 
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq-client.version}</version>
+            </dependency>
         </dependencies>
 
 

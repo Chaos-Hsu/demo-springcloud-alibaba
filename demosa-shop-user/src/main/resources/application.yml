@@ -1,5 +1,8 @@
 server:
   port: 8071
+    #tomcat:
+  #max-threads: 10
+
 
 spring:
   application:
@@ -15,3 +18,35 @@ spring:
         hbm2ddl:
           auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect #方言 默认索引方式InnoDBD
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://nacos.chensi.site/
+    sentinel:
+      #filter:
+      #enabled: false #手动编写开启链路限流
+      transport:
+        port: 9173 #可视化页面
+        dashboard: localhost:9849
+  #链路追踪
+  zipkin:
+    base-url: http://127.0.0.1:9411/ #zipkin server地址
+    discovery-client-enabled: false #让nacos把他当成URL 并不是服务名
+  sleuth:
+    sampler:
+      probability: 1.0 #采样百分比
+
+service-product: #调用服务的名称
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #客户端负载均衡随机规则
+
+#开启feignd对sentinel支持
+feign:
+  sentinel:
+    enabled: true
+
+#rocketMQ
+rocketmq:
+  name-server: 182.254.210.150:9876
+  accessKey: root
+  secretKey: 83bjHb!@
