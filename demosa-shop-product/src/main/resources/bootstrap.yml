@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: service-product
+  cloud:
+    nacos:
+      config:
+        server-addr: http://nacos.chensi.site #nacos配置中心地址 坑:不能有结尾的/
+        file-extension: yaml #文件类型
+        shared-dataids: shop-datasource.yaml #全局数据源配置
+        refreshable-dataids: shop-datasource.yaml #要试试动态配置刷新
+  profiles:
+    active: dev #开发环境

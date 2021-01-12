@@ -1,28 +1,28 @@
-server:
-  port: 8072
-
-spring:
-  application:
-    name: service-product
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-    username: root
-    password: csxqc1314
-  jpa:
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: update
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect #方言 默认索引方式InnoDBD
-  cloud:
-    nacos:
-      discovery:
-        server-addr: http://nacos.chensi.site/
-  #链路追踪
-  zipkin:
-    base-url: http://127.0.0.1:9411/ #zipkin server地址
-    discovery-client-enabled: false #让nacos把他当成URL 并不是服务名
-  sleuth:
-    sampler:
-      probability: 1.0 #采样百分比
+#server:
+#  port: 8072
+#
+#spring:
+#  application:
+#    name: service-product
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+#    username: root
+#    password: csxqc1314
+#  jpa:
+#    properties:
+#      hibernate:
+#        hbm2ddl:
+#          auto: update
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect #方言 默认索引方式InnoDBD
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: http://nacos.chensi.site/
+#  #链路追踪
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/ #zipkin server地址
+#    discovery-client-enabled: false #让nacos把他当成URL 并不是服务名
+#  sleuth:
+#    sampler:
+#      probability: 1.0 #采样百分比
