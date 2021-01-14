@@ -19,10 +19,10 @@ public class NacosConfigController {
     @Autowired
     private ConfigurableApplicationContext applicationContext;
 
-    @Value("${config.appName}")
+    //@Value("${config.appName}")
     private String appName;
 
-    @Value("${config.env}")
+    //@Value("${config.env}")
     private String env;
 
 

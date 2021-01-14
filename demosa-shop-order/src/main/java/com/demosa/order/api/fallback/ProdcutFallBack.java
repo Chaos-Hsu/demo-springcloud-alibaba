@@ -20,4 +20,10 @@ public class ProdcutFallBack implements ProductApi {
         product.setPname("出现错误");
         return product;
     }
+
+
+    @Override
+    public void deductStock(Integer pid, Integer num) {
+
+    }
 }

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,5 +30,15 @@ public class ProductController {
         return product;
     }
 
-
+    /**
+     * 扣减库存
+     *
+     * @param pid 产品ID
+     * @param num 扣减数量
+     */
+    @RequestMapping("/product/deductStock")
+    public void deductStock(@RequestParam("pid") Integer pid, @RequestParam("num") Integer num) {
+        log.info("进行扣库存,pid:{},num:{}", pid, num);
+        prodcutService.deductStock(pid, num);
+    }
 }

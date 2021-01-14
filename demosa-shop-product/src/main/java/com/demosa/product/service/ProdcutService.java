@@ -16,4 +16,12 @@ public interface ProdcutService {
      * @return
      */
     Product findById(Integer pid);
+
+    /**
+     * 扣减库存
+     *
+     * @param pid
+     * @param num
+     */
+    void deductStock(Integer pid, Integer num);
 }

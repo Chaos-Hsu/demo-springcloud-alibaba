@@ -90,4 +90,13 @@ public class OrderController {
         orderService.message();
         return "高并发测试4";
     }
+
+
+    @RequestMapping("/order/seata/prod/{pid}")
+    public Order orderSeata(@PathVariable("pid") Integer pid) {
+        log.info("Seata进行下单{}号商品查询", pid);
+        Order order = orderService.createOrderBySeata(pid);
+        log.info("Seata下单成功,内容为:{}", JSON.toJSON(order));
+        return order;
+    }
 }

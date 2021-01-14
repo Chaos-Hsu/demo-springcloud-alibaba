@@ -24,4 +24,18 @@ public class ProdcutServiceImpl implements ProdcutService {
         Optional<Product> byId = productDao.findById(pid);
         return byId.get();
     }
+
+    @Override
+    public void deductStock(Integer pid, Integer num) {
+        Optional<Product> byId = productDao.findById(pid);
+        Product product = byId.get();
+        Integer stocke = product.getStocke();
+        //TODO 校验
+        if (stocke < num) {
+
+        }
+        Integer i = 1 / 0;
+        product.setStocke(product.getStocke() - num);
+        productDao.save(product);
+    }
 }

@@ -10,6 +10,7 @@ import com.demosa.order.dao.OrderDao;
 import com.demosa.order.dao.TxLogDao;
 import com.demosa.order.exception.OrderServiceBlockHandler;
 import com.demosa.order.service.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,6 +152,33 @@ public class OrderServiceImpl implements OrderService {
                 "tx_topic",//主题
                 MessageBuilder.withPayload(order).setHeader("txId", txId).build(),//消息内容
                 order);
+    }
+
+    @Override
+    @GlobalTransactional
+    public Order createOrderBySeata(Integer pid) {
+        //1.调用服务查询
+        Product product = productApi.product(pid);
+        if (product == null) {
+            log.error("Seata创建失败:{}产品不存在", pid);
+            return null;
+        }
+        //2.下单
+        Order order = new Order();
+        order.setUid(1);
+        order.setUsername("xqc");
+        order.setPid(pid);
+        order.setPname(product.getPname());
+        order.setPprice(product.getPprice());
+        order.setNumber(1);
+        orderDao.save(order);
+
+        //3.扣库存
+        productApi.deductStock(pid, 1);
+
+        //4.异步通知 1,TOPIC 2参数体
+        rocketMQTemplate.convertAndSend("order-topic", order);
+        return order;
     }
 
     //int i = 0;

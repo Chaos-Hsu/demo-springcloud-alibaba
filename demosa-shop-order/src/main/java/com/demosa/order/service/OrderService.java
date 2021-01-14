@@ -4,7 +4,7 @@ import com.demosa.domain.Order;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * 描述 :
+ * 描述 : 订单服务
  * 作者 : 徐起超
  * 时间 : 2020/12/25 4:38 下午
  */
@@ -35,4 +35,12 @@ public interface OrderService {
      */
     void createOrderBefore(Integer pid) throws Exception;
 
+
+    /**
+     * 事务下单
+     *
+     * @param pid
+     * @return
+     */
+    Order createOrderBySeata(Integer pid);
 }
